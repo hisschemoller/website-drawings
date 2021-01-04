@@ -29,6 +29,11 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <h3>PHP</h3>
+    <ul>
+      <li><a href="http://localhost:8080/api/index.php" target="_blank" rel="noopener">http://localhost:8080/api/index.php</a></li>
+      <li><a href="http://website-drawings.localdev/index.php" target="_blank" rel="noopener">http://website-drawings.localdev/index.php</a></li>
+    </ul>
   </div>
 </template>
 
@@ -43,6 +48,12 @@ import { Options, Vue } from 'vue-class-component';
 export default class HelloWorld extends Vue {
   msg!: string
 }
+
+fetch('/api')
+  .then((response) => response.json())
+  .then((json) => {
+    console.log('json: ', json);
+  });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
