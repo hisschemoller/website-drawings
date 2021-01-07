@@ -26,29 +26,61 @@ include(SHARED_PATH . '/cms_header.php');
 ?>
 
 <body>
-  <h1>Edit drawing</h1>
-  <a href="<?php echo url_for('list.php'); ?>">< Back to overview list</a>
-  <form action="<?php echo url_for('edit.php?id=' . h(u($id))); ?>" method="post">
-    <div>
-      <label>Description</label>
-      <input type="text" name="description" value="<?php echo h($drawing['description']); ?>" />
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h1>Edit drawing</h1>
+      </div>
+      <div class="col d-flex align-items-center">
+        <a href="<?php echo url_for('list.php'); ?>">< Back to overview list</a>
+      </div>
     </div>
-    <div>
-      <label>Date</label>
-      <input type="date" name="date" value="<?php echo h($drawing['date']); ?>" />
+    <div id="map" class="map"></div>
+    <form action="<?php echo url_for('edit.php?id=' . h(u($id))); ?>" method="post">
+      <div class="form-floating mb-3 mt-3">
+        <input type="text" name="description" id="description" value="<?php echo h($drawing['description']); ?>" placeholder="Description" class="form-control" />
+        <label for="description">Description</label>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-floating mb-3">
+            <input type="date" name="date" id="date" value="<?php echo h($drawing['date']); ?>" placeholder="Date" class="form-control" />
+            <label for="date">Date</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating mb-3">
+            <input type="number" name="latitude" id="latitude" value="<?php echo h($drawing['latitude']); ?>" placeholder="Latitude" class="form-control" />
+            <label for="latitude">Latitude</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating mb-3">
+            <input type="number" name="longitude" id="longitude" value="<?php echo h($drawing['longitude']); ?>" placeholder="Longitude" class="form-control" />
+            <label for="longitude">Longitude</label>
+          </div>
+        </div>
+      </div>
+      <input type="submit" name="submit" value="Submit" class="btn btn-primary" />
     </div>
-    <div>
-      <label>Latitude</label>
-      <input type="number" name="latitude" value="<?php echo h($drawing['latitude']); ?>" />
-    </div>
-    <div>
-      <label>Longitude</label>
-      <input type="number" name="longitude" value="<?php echo h($drawing['longitude']); ?>" />
-    </div>
-    <div>
-      <label></label>
-      <input type="submit" name="submit" value="Submit" />
-    </div>
-  </form>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    const map = new ol.Map({
+      target: 'map',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([<?php echo h($drawing['longitude']); ?>, <?php echo h($drawing['latitude']); ?>]),
+        zoom: 16,
+      })
+    });
+  </script>
 </body>
 </html>

@@ -5,21 +5,32 @@ include(SHARED_PATH . '/cms_header.php');
 ?>
 
 <body>
-  <h1>List of all drawings</h1>
-  <ul>
+  <div class="container mt-3">
+    <h1>List of all drawings</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
 
 <?php 
   $drawings_set = get_all_drawings();
   while ($row = mysqli_fetch_assoc($drawings_set)) {
     $description = $row['description'];
     $description = strlen($description) > 100 ? substr($description) . '...' : $description;
-    echo '<li>';
-    echo '<div><a href="' . url_for('edit.php') . '?id=' . $row['id'] . '">' . $description . '</a> (' . $row['date'] . ')</div>';
-    echo '</li>';
+    echo '<tr>';
+    echo '<td><a href="' . url_for('edit.php') . '?id=' . $row['id'] . '">' . $description . '</a></td>';
+    echo '<td>' . $row['date'] . '</td>';
+    echo '</tr>';
   }
 ?>
 
-</ul>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
 
