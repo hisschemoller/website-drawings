@@ -1,13 +1,9 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php 
+require_once('../../private/initialize.php');
+$page_title = 'List of Drawings';
+include(SHARED_PATH . '/cms_header.php');
+?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>List</title>
-  <link rel="stylesheet" href="css/backend.css">
-</head>
 <body>
   <h1>List of all drawings</h1>
   <ul>
@@ -18,7 +14,7 @@
     $description = $row['description'];
     $description = strlen($description) > 100 ? substr($description) . '...' : $description;
     echo '<li>';
-    echo '<div><a href="edit?id=' . $row['id'] . '">' . $description . '</a> (' . $row['date'] . ')</div>';
+    echo '<div><a href="' . url_for('edit.php') . '?id=' . $row['id'] . '">' . $description . '</a> (' . $row['date'] . ')</div>';
     echo '</li>';
   }
 ?>
