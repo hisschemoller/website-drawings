@@ -77,6 +77,7 @@ include(SHARED_PATH . '/cms_header.php');
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script type="text/javascript">
+
     const className = 'custom-mouse-position';
     const mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: ol.coordinate.createStringXY(6),
@@ -85,6 +86,7 @@ include(SHARED_PATH . '/cms_header.php');
       className,
       undefinedHTML: '&nbsp;',
     });
+
     const map = new ol.Map({
       controls: ol.control.defaults().extend([mousePositionControl]),
       layers: [
@@ -98,6 +100,29 @@ include(SHARED_PATH . '/cms_header.php');
         zoom: 16,
       })
     });
+
+    const feature = new ol.Feature({
+      geometry: new ol.geom.Point(ol.proj.fromLonLat([<?php echo h($drawing['longitude']); ?>, <?php echo h($drawing['latitude']); ?>]))
+    });
+
+    feature.setStyle(
+      new ol.style.Style({
+        image: new ol.style.Icon({
+          color: 'rgba(255, 0, 0, .5)',
+          crossOrigin: 'anonymous',
+          scale: 0.1,
+          src: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Green_Dot.svg',
+        }),
+      })
+    );
+
+    const layer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [ feature ],
+      })
+    });
+    map.addLayer(layer);
+
     map.on('click', (event) => {
       const coordsStr = document.querySelector('.' + className).innerHTML;
       const coords = coordsStr.split(',');
@@ -105,6 +130,7 @@ include(SHARED_PATH . '/cms_header.php');
       document.querySelector('#latitude').value = parseFloat(coords[1]);
       console.log('click', parseFloat(coords[0]), coords[1], typeof parseFloat(coords[0]));
     });
+
   </script>
 </body>
 </html>
