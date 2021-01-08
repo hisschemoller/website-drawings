@@ -22,7 +22,7 @@ include(SHARED_PATH . '/cms_header.php');
     $description = $row['description'];
     $description = strlen($description) > 100 ? substr($description) . '...' : $description;
     echo '<tr>';
-    echo '<td><a href="' . url_for('edit.php') . '?id=' . $row['id'] . '">' . $description . '</a></td>';
+    echo '<td><a href="' . url_for('backend/edit.php') . '?id=' . $row['id'] . '">' . $description . '</a></td>';
     echo '<td>' . $row['date'] . '</td>';
     echo '</tr>';
   }
