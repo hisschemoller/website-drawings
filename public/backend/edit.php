@@ -36,6 +36,7 @@ include(SHARED_PATH . '/cms_header.php');
       </div>
     </div>
     <div id="map" class="map"></div>
+    <div id="mouse-position"></div>
     <form action="<?php echo url_for('edit.php?id=' . h(u($id))); ?>" method="post">
       <div class="form-floating mb-3 mt-3">
         <input type="text" name="description" id="description" value="<?php echo h($drawing['description']); ?>" placeholder="Description" class="form-control" />
@@ -51,13 +52,13 @@ include(SHARED_PATH . '/cms_header.php');
         </div>
         <div class="col">
           <div class="form-floating mb-3">
-            <input type="number" name="latitude" id="latitude" value="<?php echo h($drawing['latitude']); ?>" placeholder="Latitude" class="form-control" />
+            <input type="text" name="latitude" id="latitude" value="<?php echo h($drawing['latitude']); ?>" placeholder="Latitude" class="form-control" />
             <label for="latitude">Latitude</label>
           </div>
         </div>
         <div class="col">
           <div class="form-floating mb-3">
-            <input type="number" name="longitude" id="longitude" value="<?php echo h($drawing['longitude']); ?>" placeholder="Longitude" class="form-control" />
+            <input type="text" name="longitude" id="longitude" value="<?php echo h($drawing['longitude']); ?>" placeholder="Longitude" class="form-control" />
             <label for="longitude">Longitude</label>
           </div>
         </div>
@@ -69,17 +70,33 @@ include(SHARED_PATH . '/cms_header.php');
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script type="text/javascript">
+    const className = 'custom-mouse-position';
+    const mousePositionControl = new ol.control.MousePosition({
+      coordinateFormat: ol.coordinate.createStringXY(6),
+      projection: 'EPSG:4326',
+      target: document.getElementById('mouse-position'),
+      className,
+      undefinedHTML: '&nbsp;',
+    });
     const map = new ol.Map({
-      target: 'map',
+      controls: ol.control.defaults().extend([mousePositionControl]),
       layers: [
         new ol.layer.Tile({
           source: new ol.source.OSM()
         })
       ],
+      target: 'map',
       view: new ol.View({
         center: ol.proj.fromLonLat([<?php echo h($drawing['longitude']); ?>, <?php echo h($drawing['latitude']); ?>]),
         zoom: 16,
       })
+    });
+    map.on('click', (event) => {
+      const coordsStr = document.querySelector('.' + className).innerHTML;
+      const coords = coordsStr.split(',');
+      document.querySelector('#longitude').value = parseFloat(coords[0]);
+      document.querySelector('#latitude').value = parseFloat(coords[1]);
+      console.log('click', parseFloat(coords[0]), coords[1], typeof parseFloat(coords[0]));
     });
   </script>
 </body>
