@@ -5,11 +5,15 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import store from './store/index';
 import HelloWorld from './components/HelloWorld.vue';
 
 @Options({
   components: {
     HelloWorld,
+  },
+  async created() {
+    store.dispatch('getDrawings');
   },
 })
 export default class App extends Vue {}
