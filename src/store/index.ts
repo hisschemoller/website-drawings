@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import FETCH_DRAWINGS from './action-types';
 
 export default createStore({
   state: {
@@ -10,19 +11,16 @@ export default createStore({
     },
   },
   actions: {
-    async getDrawings(context) {
+    async [FETCH_DRAWINGS]({ commit }) {
       try {
         const response = await fetch('http://localhost:8080/api/index.php');
         const json = await response.json();
-        context.commit('setDrawings', json);
+        commit('setDrawings', json);
       } catch (err) {
         console.log('getDrawings error:', err);
       }
     },
   },
-  getters: {
-    drawings: (state) => state.drawings,
-  },
-  modules: {
-  },
+  getters: {},
+  modules: {},
 });

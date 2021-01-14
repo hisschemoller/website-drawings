@@ -1,0 +1,2 @@
+const FETCH_DRAWINGS = 'FETCH_DRAWINGS';
+export default FETCH_DRAWINGS;

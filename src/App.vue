@@ -1,19 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="container">
+    <Test />
+    <OpenStreetMap />
+    <Test2 />
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import store from './store/index';
-import HelloWorld from './components/HelloWorld.vue';
+import { mapActions, mapState } from 'vuex';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import FETCH_DRAWINGS from './store/action-types';
+import Test from './components/Test.vue';
+import Test2 from './components/Test2.vue';
+import OpenStreetMap from './components/OpenStreetMap.vue';
 
 @Options({
   components: {
-    HelloWorld,
+    OpenStreetMap,
+    Test,
+    Test2,
+  },
+  computed: {
+    ...mapState(['drawings']),
+  },
+  methods: {
+    ...mapActions({
+      fetchDrawings: FETCH_DRAWINGS,
+    }),
   },
   async created() {
-    store.dispatch('getDrawings');
+    // this.$store.dispatch(FETCH_DRAWINGS);
+    this.fetchDrawings();
+    // console.log('this.$store.state.drawings:', this.$store.state.drawings);
+    console.log('drawings:', this.drawings);
   },
 })
 export default class App extends Vue {}
@@ -21,11 +41,6 @@ export default class App extends Vue {}
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
