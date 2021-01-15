@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <Test />
     <OpenStreetMap />
+    <Test />
     <Test2 />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { mapActions, mapState } from 'vuex';
+import { mapActions } from 'vuex';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FETCH_DRAWINGS from './store/action-types';
 import Test from './components/Test.vue';
@@ -21,9 +21,6 @@ import OpenStreetMap from './components/OpenStreetMap.vue';
     Test,
     Test2,
   },
-  computed: {
-    ...mapState(['drawings']),
-  },
   methods: {
     ...mapActions({
       fetchDrawings: FETCH_DRAWINGS,
@@ -32,8 +29,6 @@ import OpenStreetMap from './components/OpenStreetMap.vue';
   async created() {
     // this.$store.dispatch(FETCH_DRAWINGS);
     this.fetchDrawings();
-    // console.log('this.$store.state.drawings:', this.$store.state.drawings);
-    console.log('drawings:', this.drawings);
   },
 })
 export default class App extends Vue {}
