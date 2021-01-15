@@ -1,12 +1,13 @@
 import { createStore } from 'vuex';
 import FETCH_DRAWINGS from './action-types';
+import Drawing from '../interfaces/Drawing';
 
 export default createStore({
   state: {
-    drawings: [],
+    drawings: Array<Drawing>(),
   },
   mutations: {
-    setDrawings(state, drawings) {
+    setDrawings(state, drawings: Drawing[]) {
       state.drawings = drawings;
     },
   },

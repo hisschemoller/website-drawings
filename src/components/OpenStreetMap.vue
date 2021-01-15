@@ -27,13 +27,13 @@ const markerStyle = new Style({
 });
 
 function createMap(): void {
-  map = new Map({ // eslint-disable-line no-new
+  map = new Map({
     layers: [
-      new Tile({ // eslint-disable-line no-new
-        source: new OSM(), // eslint-disable-line no-new
+      new Tile({
+        source: new OSM(),
       }),
     ],
-    view: new View({ // eslint-disable-line no-new
+    view: new View({
       center: [0, 0],
       constrainResolution: true,
       zoom: 0,
