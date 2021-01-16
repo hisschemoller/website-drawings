@@ -4,7 +4,7 @@
       <div class="card">
         <img v-bind:src="`images/drawings/${drawing.image_file}`" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">{{drawing.title}}</h5>
           <p class="card-text">{{drawing.description}}</p>
         </div>
       </div>

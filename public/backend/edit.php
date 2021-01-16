@@ -11,11 +11,12 @@ if(is_post_request()) {
   // this is a form submit
   $drawing = [];
   $drawing['id'] = $id;
-  $drawing['image_file'] = $_POST['image_file'] ?? '';
-  $drawing['description'] = $_POST['description'] ?? '';
   $drawing['date'] = $_POST['date'] ?? '';
+  $drawing['description'] = $_POST['description'] ?? '';
+  $drawing['image_file'] = $_POST['image_file'] ?? '';
   $drawing['latitude'] = $_POST['latitude'] ?? '';
   $drawing['longitude'] = $_POST['longitude'] ?? '';
+  $drawing['title'] = $_POST['title'] ?? '';
   update_drawing($drawing);
 } else {
   $drawing = get_drawing_by_id($id);
@@ -40,6 +41,13 @@ include(SHARED_PATH . '/cms_header.php');
     <div class="row">
       <div class="col-md-8">
         <form action="<?php echo url_for('backend/edit.php?id=' . h(u($id))); ?>" method="post">
+          <input type="hidden" name="image_file" value="<?php echo h($drawing['image_file']); ?>" />
+
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" name="title" id="title" value="<?php echo h($drawing['title']); ?>" placeholder="Title" class="form-control" />
+            <label for="description">Title</label>
+          </div>
+
           <input type="hidden" name="image_file" value="<?php echo h($drawing['image_file']); ?>" />
           <div class="form-floating mb-3 mt-3">
             <input type="text" name="description" id="description" value="<?php echo h($drawing['description']); ?>" placeholder="Description" class="form-control" />

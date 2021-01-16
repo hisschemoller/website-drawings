@@ -24,7 +24,8 @@ function update_drawing($drawing) {
   $query .= "description='" . db_escape($db, $drawing['description']) . "', ";
   $query .= "date='" . db_escape($db, $drawing['date']) . "', ";
   $query .= "latitude='" . db_escape($db, $drawing['latitude']) . "', ";
-  $query .= "longitude='" . db_escape($db, $drawing['longitude']) . "' ";
+  $query .= "longitude='" . db_escape($db, $drawing['longitude']) . "', ";
+  $query .= "title='" . db_escape($db, $drawing['title']) . "' ";
   $query .= "WHERE id='" . db_escape($db, $drawing['id']) . "' ";
   $query .= "LIMIT 1";
   $result = mysqli_query($db, $query);

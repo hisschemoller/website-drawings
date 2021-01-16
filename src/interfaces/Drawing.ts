@@ -5,5 +5,6 @@ interface Drawing {
   image_file: string;
   latitude: number;
   longitude: number;
+  title: string;
 }
 export default Drawing;

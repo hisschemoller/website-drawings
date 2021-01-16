@@ -16,7 +16,6 @@ import Drawing from '../interfaces/Drawing';
 
 let map: Map;
 let markerLayer: VectorLayer;
-
 const markerStyle = new Style({
   image: new Icon({
     color: 'rgba(255, 0, 0, .5)',
@@ -26,6 +25,9 @@ const markerStyle = new Style({
   }),
 });
 
+/**
+ * Create the OpenLayers map.
+ */
 function createMap(): void {
   map = new Map({
     layers: [
@@ -42,6 +44,9 @@ function createMap(): void {
   });
 }
 
+/**
+ * Update the markers on the map.
+ */
 function updateMarkers(newDrawings: Drawing[]): void {
   const features: Feature[] = [];
 

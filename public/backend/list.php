@@ -10,6 +10,7 @@ include(SHARED_PATH . '/cms_header.php');
     <table class="table">
       <thead>
         <tr>
+          <th scope="col">Title</th>
           <th scope="col">Description</th>
           <th scope="col">Date</th>
         </tr>
@@ -20,8 +21,9 @@ include(SHARED_PATH . '/cms_header.php');
   $drawings_set = get_all_drawings();
   while ($row = mysqli_fetch_assoc($drawings_set)) {
     $description = $row['description'];
-    $description = strlen($description) > 100 ? substr($description) . '...' : $description;
+    $description = strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description;
     echo '<tr>';
+    echo '<td><a href="' . url_for('backend/edit.php') . '?id=' . $row['id'] . '">' . $row['title'] . '</a></td>';
     echo '<td><a href="' . url_for('backend/edit.php') . '?id=' . $row['id'] . '">' . $description . '</a></td>';
     echo '<td>' . $row['date'] . '</td>';
     echo '</tr>';
