@@ -1,8 +1,7 @@
 <template>
   <div class="container">
     <OpenStreetMap />
-    <Test />
-    <Test2 />
+    <TileGrid />
   </div>
 </template>
 
@@ -11,15 +10,13 @@ import { Options, Vue } from 'vue-class-component';
 import { mapActions } from 'vuex';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FETCH_DRAWINGS from './store/action-types';
-import Test from './components/Test.vue';
-import Test2 from './components/Test2.vue';
 import OpenStreetMap from './components/OpenStreetMap.vue';
+import TileGrid from './components/TileGrid.vue';
 
 @Options({
   components: {
     OpenStreetMap,
-    Test,
-    Test2,
+    TileGrid,
   },
   methods: {
     ...mapActions({
