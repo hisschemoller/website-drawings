@@ -1,5 +1,5 @@
 <template>
-  <div class="row row-cols-3 row-cols-md-3 g-4">
+  <div class="row row-cols-3 row-cols-md-3 g-4 mt-4">
     <div class="col" v-for="drawing in drawings" v-bind:key="drawing.id">
       <div class="card">
         <img v-bind:src="`images/drawings/${drawing.image_file}`" class="card-img-top" alt="...">
