@@ -1,8 +1,13 @@
 <template>
-  <div class="map" id="map" ref="map"></div>
-  <div id="popup" class="ol-popup" ref="popup" style="display:">
-    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-    <div id="popup-content"></div>
+  <div>
+    <div class="map" ref="map"></div>
+    <div class="ol-popup" ref="popup" :style="{ display: popupDisplay }">
+      <a @click="closePopup" href="#" class="ol-popup-closer"></a>
+      <div>
+        <img v-bind:src="`images/drawings/${this.popupImageFile}`" class="ol-popup-image" alt="...">
+        <h4 ref="popup-title" class="ol-popup-title">{{this.popupTitle}}</h4>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -34,13 +39,19 @@ const OpenStreetMap = defineComponent({
     return {
       clusterLayer: {} as VectorLayer,
       map: {} as Map,
-      overlay: {} as Overlay,
+      popupOverlay: {} as Overlay,
+      popupDisplay: 'none',
+      popupImageFile: '',
+      popupTitle: '',
       styleCache: {} as StyleCache,
     };
   },
   methods: {
+    closePopup() {
+      this.popupOverlay.setPosition(undefined);
+    },
     createMap() {
-      this.overlay = new Overlay({
+      this.popupOverlay = new Overlay({
         element: this.$refs.popup as HTMLElement,
         autoPan: true,
         autoPanAnimation: {
@@ -54,6 +65,7 @@ const OpenStreetMap = defineComponent({
 
       this.map = new Map({
         layers: [tileLayer],
+        overlays: [this.popupOverlay],
         target: this.$refs.map as HTMLElement,
         view: new View({
           center: [0, 0],
@@ -72,20 +84,18 @@ const OpenStreetMap = defineComponent({
 
           // a cluster with one marker is a regular marker
           if (markerFeatures.length === 1) {
-            console.log('title', markerFeatures[0].get('title'));
-            console.log('coordinate', coordinate);
-            // popup.style.display = 'block';
-            this.overlay.setPosition(coordinate);
+            this.popupDisplay = 'block';
+            this.popupImageFile = markerFeatures[0].get('imageFile');
+            this.popupTitle = markerFeatures[0].get('title');
+            this.popupOverlay.setPosition(coordinate);
+          } else {
+            this.popupDisplay = 'none';
+            this.popupOverlay.setPosition(undefined);
           }
+        } else {
+          this.popupDisplay = 'none';
+          this.popupOverlay.setPosition(undefined);
         }
-        // if (name) {
-        //   container.style.display = 'block';
-        //   var coordinate = evt.coordinate;
-        //   content.innerHTML = name;
-        //   overlay.setPosition(coordinate);
-        // } else {
-        //   container.style.display = 'none';
-        // }
       });
     },
     updateMarkers(newDrawings: Drawing[]) {
@@ -98,9 +108,12 @@ const OpenStreetMap = defineComponent({
 
       // add the new markers
       newDrawings.forEach((drawing) => {
-        const { latitude, longitude, title } = drawing;
+        const {
+          image_file: imageFile, latitude, longitude, title,
+        } = drawing;
         const feature = new Feature({
           geometry: new Point(fromLonLat([longitude, latitude])),
+          imageFile,
           title,
         });
         features.push(feature);
@@ -160,7 +173,7 @@ export default OpenStreetMap;
 </script>
 
 <style>
-#map {
+.map {
   height: 500px;
   width: 100%;
 }
@@ -169,8 +182,8 @@ export default OpenStreetMap;
   background-color: white;
   -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
   filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
-  padding: 15px;
-  border-radius: 10px;
+  padding: 30px 15px 5px 15px;
+  border-radius: 5px;
   border: 1px solid #cccccc;
   bottom: 12px;
   left: -50px;
@@ -207,5 +220,11 @@ export default OpenStreetMap;
 .ol-popup-closer:after {
   content: "x";
 }
-
+.ol-popup-image {
+  max-width: 200px;
+  margin: 0 0 5px 0;
+}
+.ol-popup-title {
+  font-size: 16px;
+}
 </style>
