@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <div class="map" ref="map"></div>
-    <div class="ol-popup" ref="popup" :style="{ display: popupDisplay }">
-      <a @click="closePopup" href="#" class="ol-popup-closer"></a>
-      <div>
-        <img v-bind:src="`images/drawings/${this.popupImageFile}`" class="ol-popup-image" alt="...">
-        <h4 ref="popup-title" class="ol-popup-title">{{this.popupTitle}}</h4>
-      </div>
+  <div class="map" ref="map"></div>
+  <div class="ol-popup" ref="popup" :style="{ display: this.popupDisplay }">
+    <a @click="closePopup" href="#" class="ol-popup-closer"></a>
+    <div>
+      <img v-bind:src="`images/drawings/${this.popupImageFile}`" class="ol-popup-image" alt="...">
+      <h4 ref="popup-title" class="ol-popup-title">{{this.popupTitle}}</h4>
     </div>
   </div>
 </template>
@@ -17,13 +15,15 @@ import { mapState } from 'vuex';
 import {
   Feature, Map, Overlay, View,
 } from 'ol';
-import { Point } from 'ol/geom';
+import * as olExtent from 'ol/extent';
+import { Geometry, Point } from 'ol/geom';
 import { Tile, Vector as VectorLayer } from 'ol/layer';
 import { fromLonLat } from 'ol/proj';
 import { Cluster, OSM, Vector as VectorSource } from 'ol/source';
 import {
   Circle as CircleStyle, Fill, Stroke, Style, Text,
 } from 'ol/style';
+import { Pixel } from 'ol/pixel';
 import 'ol/ol.css';
 import Drawing from '../interfaces/Drawing';
 
@@ -88,6 +88,8 @@ const OpenStreetMap = defineComponent({
             this.popupImageFile = markerFeatures[0].get('imageFile');
             this.popupTitle = markerFeatures[0].get('title');
             this.popupOverlay.setPosition(coordinate);
+          } else if (markerFeatures.length > 1) {
+            this.zoomToCluster(pixel);
           } else {
             this.popupDisplay = 'none';
             this.popupOverlay.setPosition(undefined);
@@ -158,6 +160,22 @@ const OpenStreetMap = defineComponent({
       });
 
       this.map.addLayer(this.clusterLayer);
+    },
+    zoomToCluster(pixel: Pixel) {
+      const feature = this.map.forEachFeatureAtPixel(pixel, (feat) => feat);
+      if (feature) {
+        const features = feature.get('features');
+        if (features.length > 1) {
+          const extent = olExtent.createEmpty();
+          features.forEach((feat: Feature) => {
+            const geometry: (Geometry|undefined) = feat.getGeometry();
+            if (geometry) {
+              olExtent.extend(extent, geometry.getExtent());
+              this.map.getView().fit(extent);
+            }
+          });
+        }
+      }
     },
   },
   mounted() {
