@@ -3,6 +3,7 @@
     <OpenStreetMap />
     <TileGrid />
   </div>
+  <LightBox />
 </template>
 
 <script lang="ts">
@@ -12,9 +13,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FETCH_DRAWINGS from './store/action-types';
 import OpenStreetMap from './components/OpenStreetMap.vue';
 import TileGrid from './components/TileGrid.vue';
+import LightBox from './components/LightBox.vue';
 
 @Options({
   components: {
+    LightBox,
     OpenStreetMap,
     TileGrid,
   },
