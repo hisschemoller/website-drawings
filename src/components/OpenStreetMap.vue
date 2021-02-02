@@ -3,7 +3,11 @@
   <div class="ol-popup" ref="popup" :style="{ display: this.popupDisplay }">
     <a @click="closePopup" href="#" class="ol-popup-closer"></a>
     <div>
-      <img v-bind:src="this.popupImageSrc" v-bind:alt="this.popupTitle" class="ol-popup-image">
+      <img
+        v-bind:src="this.popupImageSrc"
+        v-bind:alt="this.popupTitle"
+        @click="imageClickHandler(this.popupId)"
+        class="ol-popup-image">
       <h4 ref="popup-title" class="ol-popup-title">{{this.popupTitle}}</h4>
     </div>
   </div>
@@ -11,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import {
   Feature, Map, Overlay, View,
 } from 'ol';
@@ -26,6 +30,7 @@ import {
 import { Pixel } from 'ol/pixel';
 import 'ol/ol.css';
 import Drawing from '../interfaces/Drawing';
+import { SELECT_DRAWING } from '../store/action-types';
 
 interface StyleCache {
   [name: string]: Style;
@@ -41,12 +46,16 @@ const OpenStreetMap = defineComponent({
       map: {} as Map,
       popupOverlay: {} as Overlay,
       popupDisplay: 'none',
+      popupId: '',
       popupImageSrc: '',
       popupTitle: '',
       styleCache: {} as StyleCache,
     };
   },
   methods: {
+    ...mapActions({
+      selectDrawing: SELECT_DRAWING,
+    }),
     closePopup() {
       this.popupOverlay.setPosition(undefined);
     },
@@ -85,6 +94,7 @@ const OpenStreetMap = defineComponent({
           // a cluster with one marker is a regular marker
           if (markerFeatures.length === 1) {
             this.popupDisplay = 'block';
+            this.popupId = markerFeatures[0].get('id');
             this.popupImageSrc = markerFeatures[0].get('src');
             this.popupTitle = markerFeatures[0].get('title');
             this.popupOverlay.setPosition(coordinate);
@@ -100,6 +110,9 @@ const OpenStreetMap = defineComponent({
         }
       });
     },
+    imageClickHandler(id: string) {
+      this.selectDrawing({ id });
+    },
     updateMarkers(newDrawings: Drawing[]) {
       const features: Feature[] = [];
 
@@ -111,10 +124,11 @@ const OpenStreetMap = defineComponent({
       // add the new markers
       newDrawings.forEach((drawing) => {
         const {
-          src, latitude, longitude, title,
+          id, latitude, longitude, src, title,
         } = drawing;
         const feature = new Feature({
           geometry: new Point(fromLonLat([longitude, latitude])),
+          id,
           src,
           title,
         });
@@ -239,6 +253,7 @@ export default OpenStreetMap;
   content: "x";
 }
 .ol-popup-image {
+  cursor: pointer;
   max-width: 200px;
   margin: 0 0 5px 0;
 }
