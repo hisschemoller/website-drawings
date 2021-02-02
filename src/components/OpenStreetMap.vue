@@ -3,7 +3,7 @@
   <div class="ol-popup" ref="popup" :style="{ display: this.popupDisplay }">
     <a @click="closePopup" href="#" class="ol-popup-closer"></a>
     <div>
-      <img v-bind:src="`images/drawings/${this.popupImageFile}`" class="ol-popup-image" alt="...">
+      <img v-bind:src="this.popupImageSrc" v-bind:alt="this.popupTitle" class="ol-popup-image">
       <h4 ref="popup-title" class="ol-popup-title">{{this.popupTitle}}</h4>
     </div>
   </div>
@@ -41,7 +41,7 @@ const OpenStreetMap = defineComponent({
       map: {} as Map,
       popupOverlay: {} as Overlay,
       popupDisplay: 'none',
-      popupImageFile: '',
+      popupImageSrc: '',
       popupTitle: '',
       styleCache: {} as StyleCache,
     };
@@ -85,7 +85,7 @@ const OpenStreetMap = defineComponent({
           // a cluster with one marker is a regular marker
           if (markerFeatures.length === 1) {
             this.popupDisplay = 'block';
-            this.popupImageFile = markerFeatures[0].get('imageFile');
+            this.popupImageSrc = markerFeatures[0].get('src');
             this.popupTitle = markerFeatures[0].get('title');
             this.popupOverlay.setPosition(coordinate);
           } else if (markerFeatures.length > 1) {
@@ -111,11 +111,11 @@ const OpenStreetMap = defineComponent({
       // add the new markers
       newDrawings.forEach((drawing) => {
         const {
-          image_file: imageFile, latitude, longitude, title,
+          src, latitude, longitude, title,
         } = drawing;
         const feature = new Feature({
           geometry: new Point(fromLonLat([longitude, latitude])),
-          imageFile,
+          src,
           title,
         });
         features.push(feature);
@@ -138,7 +138,7 @@ const OpenStreetMap = defineComponent({
           if (!style) {
             style = new Style({
               image: new CircleStyle({
-                radius: 10,
+                radius: 12,
                 stroke: new Stroke({
                   color: '#fff',
                 }),

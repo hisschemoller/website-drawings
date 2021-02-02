@@ -8900,6 +8900,11 @@ vue-class-component@^8.0.0-0:
   resolved "https://registry.npm.taobao.org/vue-class-component/download/vue-class-component-8.0.0-rc.1.tgz#db692cd97656eb9a08206c03d0b7398cdb1d9420"
   integrity sha1-22ks2XZW65oIIGwD0Lc5jNsdlCA=
 
+vue-easy-lightbox@^1.0.0-rc.3:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/vue-easy-lightbox/-/vue-easy-lightbox-1.0.0-rc.3.tgz#acb38a27575ceceab529fa7cd9c21c3fba3c907c"
+  integrity sha512-lTy/RwwlUBFZYgLvWoknLavd1Qa3vIpt/Gqxb5s91Vqrtpl+idMHRh++hWkHfGim37uIpqpVeGg+Tggi06fGrA==
+
 vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.3.0:
   version "7.3.0"
   resolved "https://registry.npm.taobao.org/vue-eslint-parser/download/vue-eslint-parser-7.3.0.tgz?cache=0&sync_timestamp=1608031066427&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-eslint-parser%2Fdownload%2Fvue-eslint-parser-7.3.0.tgz#894085839d99d81296fa081d19643733f23d7559"
