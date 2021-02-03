@@ -19,7 +19,7 @@ import { mapActions, mapState } from 'vuex';
 import {
   Feature, Map, Overlay, View,
 } from 'ol';
-import * as olExtent from 'ol/extent';
+import { containsXY, createEmpty, extend } from 'ol/extent';
 import { Geometry, Point } from 'ol/geom';
 import { Tile, Vector as VectorLayer } from 'ol/layer';
 import { fromLonLat } from 'ol/proj';
@@ -30,7 +30,7 @@ import {
 import { Pixel } from 'ol/pixel';
 import 'ol/ol.css';
 import Drawing from '../interfaces/Drawing';
-import { SELECT_DRAWING } from '../store/action-types';
+import { SELECT_DRAWING, UPDATE_VISIBLE_DRAWINGS } from '../store/action-types';
 
 interface StyleCache {
   [name: string]: Style;
@@ -55,6 +55,7 @@ const OpenStreetMap = defineComponent({
   methods: {
     ...mapActions({
       selectDrawing: SELECT_DRAWING,
+      updateVisibleDrawings: UPDATE_VISIBLE_DRAWINGS,
     }),
     closePopup() {
       this.popupOverlay.setPosition(undefined);
@@ -108,6 +109,23 @@ const OpenStreetMap = defineComponent({
           this.popupDisplay = 'none';
           this.popupOverlay.setPosition(undefined);
         }
+      });
+
+      this.map.on('moveend', () => {
+        const mapExtent = this.map.getView().calculateExtent(this.map.getSize());
+        const clusterFeatures = this.clusterLayer.getSource().getFeatures();
+        const visibleIds: string[] = [];
+        clusterFeatures.forEach((clusterFeature) => {
+          const coordinates = clusterFeature.get('geometry').getCoordinates();
+          const isOnMap = containsXY(mapExtent, coordinates[0], coordinates[1]);
+          if (isOnMap) {
+            const markerFeatures = clusterFeature.get('features');
+            markerFeatures.forEach((markerFeature: Feature) => {
+              visibleIds.push(markerFeature.get('id'));
+            });
+          }
+        });
+        this.updateVisibleDrawings({ visibleIds });
       });
     },
     imageClickHandler(id: string) {
@@ -180,11 +198,11 @@ const OpenStreetMap = defineComponent({
       if (feature) {
         const features = feature.get('features');
         if (features.length > 1) {
-          const extent = olExtent.createEmpty();
+          const extent = createEmpty();
           features.forEach((feat: Feature) => {
             const geometry: (Geometry|undefined) = feat.getGeometry();
             if (geometry) {
-              olExtent.extend(extent, geometry.getExtent());
+              extend(extent, geometry.getExtent());
               this.map.getView().fit(extent);
             }
           });
