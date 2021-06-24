@@ -13,7 +13,7 @@ if(is_post_request()) {
   $drawing['id'] = $id;
   $drawing['date'] = $_POST['date'] ?? '';
   $drawing['description'] = $_POST['description'] ?? '';
-  $drawing['image_file'] = $_POST['image_file'] ?? '';
+  $drawing['image_file_small'] = $_POST['image_file_small'] ?? '';
   $drawing['latitude'] = $_POST['latitude'] ?? '';
   $drawing['longitude'] = $_POST['longitude'] ?? '';
   $drawing['title'] = $_POST['title'] ?? '';
@@ -78,7 +78,7 @@ include(SHARED_PATH . '/cms_header.php');
         </form>
       </div>
       <div class="col-md-4">
-        <img src="<?php echo url_for('images/drawings/' . h($drawing['image_file'])); ?>" alt="" class="img-fluid mt-3" />
+        <img src="<?php echo url_for('images/drawings/' . h($drawing['image_file_small'])); ?>" alt="" class="img-fluid mt-3" />
       </div>
     </div>
   </div>

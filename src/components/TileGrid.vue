@@ -1,13 +1,11 @@
 <template>
-  <div class="row row-cols-3 row-cols-md-3 g-4 mt-4">
-    <div class="col" v-for="drawing in visibleDrawings" v-bind:key="drawing.id">
-      <div class="card">
-        <img v-bind:src="drawing.src" @click="imageClickHandler(drawing.id)"
-        class="card-img-top" alt="drawing.title">
-        <div class="card-body">
-          <h5 class="card-title">{{drawing.title}}</h5>
-          <p class="card-text">{{drawing.description}}</p>
-        </div>
+  <div class="card-columns mt-4">
+    <div class="card" v-for="drawing in visibleDrawings" v-bind:key="drawing.id">
+      <img v-bind:src="drawing.srcSmall" @click="imageClickHandler(drawing.id)"
+      class="card-img-top" alt="drawing.title">
+      <div class="card-body">
+        <p class="card-text">{{drawing.description}}</p>
+        <p class="card-text">{{drawing.dateFormatted}}</p>
       </div>
     </div>
   </div>
@@ -35,7 +33,21 @@ export default TileGrid;
 </script>
 
 <style>
-.card img {
+.card {
+  border: none;
+}
+.card-img-top {
   cursor: pointer;
+}
+.card-body {
+  padding-bottom: 0.8rem;
+  padding-top: 0.5rem;
+}
+.card-text {
+  margin-bottom: 0;
+}
+.card-text:last-of-type {
+  color: #bbb;
+  font-style: italic;
 }
 </style>

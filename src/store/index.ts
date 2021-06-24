@@ -10,10 +10,17 @@ export default createStore({
   },
   mutations: {
     setDrawings(state, drawings: Drawing[]) {
-      state.drawings = drawings.map((drawing) => ({
-        ...drawing,
-        src: `images/drawings/${drawing.image_file}`,
-      }));
+      state.drawings = drawings.map((drawing) => {
+        const date = new Date(drawing.date);
+        return {
+          ...drawing,
+          src: `images/drawings/${drawing.image_file_large}`,
+          srcSmall: `images/drawings/${drawing.image_file_small}`,
+          dateFormatted: `${new Intl.DateTimeFormat('nl', { day: 'numeric' }).format(date)} 
+            ${new Intl.DateTimeFormat('nl', { month: 'long' }).format(date)} 
+            ${new Intl.DateTimeFormat('nl', { year: 'numeric' }).format(date)}`,
+        };
+      });
     },
     setSelectedId(state, id: string) {
       state.selectedId = id;

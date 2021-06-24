@@ -96,7 +96,7 @@ const OpenStreetMap = defineComponent({
           if (markerFeatures.length === 1) {
             this.popupDisplay = 'block';
             this.popupId = markerFeatures[0].get('id');
-            this.popupImageSrc = markerFeatures[0].get('src');
+            this.popupImageSrc = markerFeatures[0].get('srcSmall');
             this.popupTitle = markerFeatures[0].get('title');
             this.popupOverlay.setPosition(coordinate);
           } else if (markerFeatures.length > 1) {
@@ -142,12 +142,12 @@ const OpenStreetMap = defineComponent({
       // add the new markers
       newDrawings.forEach((drawing) => {
         const {
-          id, latitude, longitude, src, title,
+          id, latitude, longitude, srcSmall, title,
         } = drawing;
         const feature = new Feature({
           geometry: new Point(fromLonLat([longitude, latitude])),
           id,
-          src,
+          srcSmall,
           title,
         });
         features.push(feature);
@@ -158,7 +158,7 @@ const OpenStreetMap = defineComponent({
       });
 
       const clusterSource = new Cluster({
-        distance: 50,
+        distance: 20,
         source,
       });
 
