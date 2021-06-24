@@ -5,6 +5,8 @@ import Drawing from '../interfaces/Drawing';
 export default createStore({
   state: {
     drawings: Array<Drawing>(),
+    pageIndex: 0,
+    pageSize: 30,
     selectedId: '',
     visibleIds: Array<string>(),
   },
@@ -22,11 +24,16 @@ export default createStore({
         };
       });
     },
+    setPage(state, index: number) {
+      console.log('setPage', index);
+      state.pageIndex = index;
+    },
     setSelectedId(state, id: string) {
       state.selectedId = id;
     },
     setVisibleDrawings(state, visibleIds) {
       state.visibleIds = visibleIds;
+      state.pageIndex = 0;
     },
   },
   actions: {
@@ -47,13 +54,19 @@ export default createStore({
     },
   },
   getters: {
+    numPages: (state) => Math.ceil(state.visibleIds.length / state.pageSize),
     selectedIndex: (state, getters) => getters.visibleDrawings.findIndex(
       (drawing: Drawing) => drawing.id === state.selectedId,
     ),
-    // eslint-disable-next-line arrow-body-style
-    visibleDrawings: (state) => state.visibleIds.map((id: string) => {
-      return state.drawings.find((drawing: Drawing) => drawing.id === id);
-    }),
+    visibleDrawings: ({
+      drawings, pageIndex, pageSize, visibleIds,
+    }) => {
+      const pageOfIDs = visibleIds.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+      // eslint-disable-next-line arrow-body-style
+      return pageOfIDs.map((id: string) => {
+        return drawings.find((drawing: Drawing) => drawing.id === id);
+      });
+    },
   },
   modules: {},
 });
