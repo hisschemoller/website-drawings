@@ -192,6 +192,7 @@ const OpenStreetMap = defineComponent({
       });
 
       this.map.addLayer(this.clusterLayer);
+      this.map.getView().fit(source.getExtent());
     },
     zoomToCluster(pixel: Pixel) {
       const feature = this.map.forEachFeatureAtPixel(pixel, (feat) => feat);
