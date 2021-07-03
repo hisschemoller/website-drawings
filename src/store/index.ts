@@ -4,6 +4,7 @@ import Drawing from '../interfaces/Drawing';
 
 export default createStore({
   state: {
+    env: 'live', // 'dev' | 'live'
     drawings: Array<Drawing>(),
     pageIndex: 0,
     pageSize: 30,
@@ -16,8 +17,8 @@ export default createStore({
         const date = new Date(drawing.date);
         return {
           ...drawing,
-          src: `images/drawings/${drawing.image_file_large}`,
-          srcSmall: `images/drawings/${drawing.image_file_small}`,
+          src: `/images/drawings/${drawing.image_file_large}`,
+          srcSmall: `/images/drawings/${drawing.image_file_small}`,
           dateFormatted: `${new Intl.DateTimeFormat('nl', { day: 'numeric' }).format(date)} 
             ${new Intl.DateTimeFormat('nl', { month: 'long' }).format(date)} 
             ${new Intl.DateTimeFormat('nl', { year: 'numeric' }).format(date)}`,
@@ -37,9 +38,12 @@ export default createStore({
     },
   },
   actions: {
-    async [FETCH_DRAWINGS]({ commit }) {
+    async [FETCH_DRAWINGS]({ commit, state }) {
       try {
-        const response = await fetch('http://localhost:8080/api/index.php');
+        // const response = await fetch('http://localhost:8080/api/index.php');
+        const response = await fetch(state.env === 'dev'
+          ? ' json/drawings.json'
+          : '/website-drawings/json/drawings.json');
         const json = await response.json();
         commit('setDrawings', json);
       } catch (err) {

@@ -170,12 +170,12 @@ const OpenStreetMap = defineComponent({
           if (!style) {
             style = new Style({
               image: new CircleStyle({
-                radius: 12,
+                radius: 14,
                 stroke: new Stroke({
                   color: '#fff',
                 }),
                 fill: new Fill({
-                  color: size === 1 ? '#006600' : '#3399CC',
+                  color: size === 1 ? '#006600' : '#666699',
                 }),
               }),
               text: new Text({
@@ -183,6 +183,7 @@ const OpenStreetMap = defineComponent({
                 fill: new Fill({
                   color: '#fff',
                 }),
+                scale: 1.2,
               }),
             });
             this.styleCache[size] = style;
@@ -263,13 +264,17 @@ export default OpenStreetMap;
   margin-left: -11px;
 }
 .ol-popup-closer {
-  text-decoration: none;
+  font-size: 1.2rem;
   position: absolute;
-  top: 2px;
   right: 8px;
+  text-decoration: none;
+  top: 2px;
+}
+.ol-popup-closer:hover {
+  text-decoration: none;
 }
 .ol-popup-closer:after {
-  content: "x";
+  content: "×";
 }
 .ol-popup-image {
   cursor: pointer;

@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import { mapActions, mapGetters, mapState } from 'vuex';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import VueEasyLightbox from 'vue-easy-lightbox';
 import { FETCH_DRAWINGS, SELECT_DRAWING } from './store/action-types';
 import OpenStreetMap from './components/OpenStreetMap.vue';
