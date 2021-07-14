@@ -239,6 +239,7 @@ export default OpenStreetMap;
   border: 1px solid #cccccc;
   bottom: 12px;
   left: -50px;
+  min-height: 80px;
   min-width: 80px;
 }
 .ol-popup:after,
@@ -264,6 +265,7 @@ export default OpenStreetMap;
   margin-left: -11px;
 }
 .ol-popup-closer {
+  color: #999 !important;
   font-size: 1.2rem;
   position: absolute;
   right: 8px;

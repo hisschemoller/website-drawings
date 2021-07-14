@@ -43,7 +43,7 @@ export default createStore({
         // const response = await fetch('http://localhost:8080/api/index.php');
         const response = await fetch(state.env === 'dev'
           ? ' json/drawings.json'
-          : '/website-drawings/json/drawings.json');
+          : '/wordpress/wp-content/plugins/drawings-app/dist/json/drawings.json');
         const json = await response.json();
         commit('setDrawings', json);
       } catch (err) {

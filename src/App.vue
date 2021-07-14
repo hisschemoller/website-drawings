@@ -10,7 +10,8 @@
       :imgs="visibleDrawings"
       :index="selectedIndex"
       @hide="closeLightBox"
-    ></vue-easy-lightbox>
+    >
+    </vue-easy-lightbox>
   </div>
 </template>
 
@@ -54,5 +55,12 @@ export default class App extends Vue {}
 <style>
 #app {
   text-align: center;
+}
+.vel-img {
+  max-height: 720px !important;
+  max-width: 720px !important;
+}
+.vel-toolbar {
+  display: none !important;
 }
 </style>
