@@ -1,36 +1,23 @@
-# website-drawings
+# Website Drawings
 
-Page built with Vue, TypeScript and PHP on hisschemoller.com showing my drawings.
+Page built with Vue, TypeScript and PHP on hisschemoller.com to show my drawings.
+
+http://www.hisschemoller.com/drawings
+
+## Local development
 
 http://website-drawings.localdev/backend/rename_files.php
 
 http://website-drawings.localdev/backend/list.php
 
-- WordPress + Create React App Integration
-  - https://medium.com/swlh/wordpress-create-react-app-integration-30b41657b79e
-- How to use React inside a Wordpress application ?
-  - https://dev.to/bobman38/how-to-use-react-inside-a-wordpress-application-49i
 
+## Foto's van tekeningen maken
 
-## Project setup
-```
-yarn install
-```
+* In plastic verpakt de plaat museumglas en stuk wit karton met aanleghoek.
+* Microfoon statief met daarop de camera met schroefdraad adapter stukje.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+![Aanleghoek](assets/img/tafel1.jpg 'Aanleghoek')
 
-### Compiles and minifies for production
-```
-yarn build
-```
+![Glasplaat](assets/img/tafel2.jpg 'Glasplaat')
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Camera](assets/img/tafel3.jpg 'Camera')
