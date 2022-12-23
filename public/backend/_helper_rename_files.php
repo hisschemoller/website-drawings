@@ -7,6 +7,10 @@ include(SHARED_PATH . '/cms_header.php');
 <body>
   <div class="container mt-3">
     <h1>List of all drawings</h1>
+    <p>This file get all image files in a folder and renames them, where the old filename is
+      expected to be a date and location, like '2016-06-06_weesperstraat.png', which would be
+      renamed to 'wouter-hisschemoller_-_2016-06-06_weesperstraat_-_[640|1280].png'
+    </p>
     <table class="table">
       <thead>
         <tr>

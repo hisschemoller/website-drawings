@@ -8,6 +8,10 @@ http://www.hisschemoller.com/drawings
 
 Use MAMP, point virtual host *website-drawings.localdev* to this project.
 
+
+
+http://website-drawings.localdev/public/backend/list.php
+
 ### Edit table helper
 
 http://website-drawings.localdev/public/backend/_helper_edit_table.php
@@ -38,8 +42,16 @@ After the drawings are entered into the database the image files are copied by h
 
 http://website-drawings.localdev/public/backend/_helper_rename_files.php
 
+This file get all image files in a folder and renames them, where the old filename is expected to be
+a date and location, like '2016-06-06_weesperstraat.png', which would be renamed to 'wouter-hisschemoller_-_2016-06-06_weesperstraat_-_[640|1280].png'
 
-http://website-drawings.localdev/backend/list.php
+### Resize files helper
+
+http://website-drawings.localdev/public/backend/_helper_resize_files.php
+
+This file get all image files in a folder, resizes them to 1280 px width, renames them from
+'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
+
 
 ## Foto's bewerken
 

@@ -7,6 +7,9 @@ include(SHARED_PATH . '/cms_header.php');
 <body>
   <div class="container mt-3">
     <h1>List of all drawings</h1>
+    <p>This file get all image files in a folder, resizes them to 1280 px width, renames them from
+      'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
+    </p>
     <table class="table">
       <thead>
         <tr>
