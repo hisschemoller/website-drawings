@@ -7,6 +7,15 @@ include(SHARED_PATH . '/cms_header.php');
 <body>
   <div class="container mt-3">
     <h1>List of all drawings</h1>
+    <p>This file searches for all png image files in folder ../images/drawings-640/.<br>
+      For each file, it gets the width and height of the file
+      '../images/drawings-640/[base-name]640.png'.<br>
+      The same for files '../images/drawings-1280/[base-name]1280.png'.<br>
+      Both should exist. The script enters names, sizes, description and date as a row in database
+      table hisschemoller_drawings.</p>
+    <p>A list is shown below of all the files found and rows entered.</p>
+    <p>After the drawings are entered into the database the image files are copied by hand to the
+      '../images/drawings/' folder so the other ones are empty for the next batch.</p>
     <table class="table">
       <thead>
         <tr>
@@ -32,6 +41,7 @@ $files = glob($dir_s ."{*.png}", GLOB_BRACE|GLOB_NOSORT);
 $queryRows = '';
 $i = 0;
 $numFiles = count($files);
+echo $numFiles;
 foreach ($files as $file) {
   $extPos = strpos($file, $ext);
   $baseFileName = substr($file, $pathPos_s);
@@ -62,6 +72,7 @@ $query = "INSERT INTO hisschemoller_drawings ";
 $query .= "(image_file_large, width_large, height_large, image_file_small, width_small, height_small, description, date) ";
 $query .= "VALUES $queryRows";
 
+$result = null;
 // $result = mysqli_query($db, $query);
 
 // for UPDATE statements $result is true|false

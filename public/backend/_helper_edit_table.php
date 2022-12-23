@@ -2,11 +2,16 @@
 require_once('../../private/initialize.php');
 $page_title = 'Import images to DB';
 include(SHARED_PATH . '/cms_header.php');
+$default_latitude = 52.362731;
+$default_longitude = 4.905849;
 ?>
 
 <body>
   <div class="container mt-3">
     <h1>List of all drawings</h1>
+    <p>This file shows a list of all entries in the hisschemoller_drawings database table where
+      the latitude and longitude are both 0. It also immediately sets them to default values 
+      <?php echo $default_latitude; ?> and <?php echo $default_longitude; ?>.</p>
     <table class="table">
       <thead>
         <tr>
@@ -18,8 +23,6 @@ include(SHARED_PATH . '/cms_header.php');
       <tbody>
 
 <?php
-$default_latitude = 52.362731;
-$default_longitude = 4.905849;
 $drawings_set = get_all_drawings();
 while ($row = mysqli_fetch_assoc($drawings_set)) {
   $id = $row['id'];
