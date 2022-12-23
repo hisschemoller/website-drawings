@@ -6,15 +6,20 @@ http://www.hisschemoller.com/drawings
 
 ## Local development
 
-Use MAMP, point virtual host *website-drawings.localdev* to this project.
+Use MAMP, point virtual host *website-drawings.localdev* to *public/* in this project.
 
+http://website-drawings.localdev/backend/api.php<br>
+Just dump the whole drawings table.
 
+http://website-drawings.localdev/backend/edit.php<br>
+Edit a drawing, its coordinates.
 
-http://website-drawings.localdev/public/backend/list.php
+http://website-drawings.localdev/backend/list.php<br>
+List of all drawings with edit links.
 
 ### Edit table helper
 
-http://website-drawings.localdev/public/backend/_helper_edit_table.php
+http://website-drawings.localdev/backend/_helper_edit_table.php
 
 This file shows a list of all entries in the hisschemoller_drawings database table where the
 latitude and longitude are both 0. It also immediately sets them to default values.
@@ -24,7 +29,7 @@ their position from a location that is already nearby.
 
 ### Import files helper
 
-http://website-drawings.localdev/public/backend/_helper_import_files.php
+http://website-drawings.localdev/backend/_helper_import_files.php
 
 This file searches for all png image files in folder ../images/drawings-640/.<br>
 For each file, it gets the width and height of the file
@@ -40,14 +45,14 @@ After the drawings are entered into the database the image files are copied by h
 
 ### Rename files helper
 
-http://website-drawings.localdev/public/backend/_helper_rename_files.php
+http://website-drawings.localdev/backend/_helper_rename_files.php
 
 This file get all image files in a folder and renames them, where the old filename is expected to be
 a date and location, like '2016-06-06_weesperstraat.png', which would be renamed to 'wouter-hisschemoller_-_2016-06-06_weesperstraat_-_[640|1280].png'
 
 ### Resize files helper
 
-http://website-drawings.localdev/public/backend/_helper_resize_files.php
+http://website-drawings.localdev/backend/_helper_resize_files.php
 
 This file get all image files in a folder, resizes them to 1280 px width, renames them from
 'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
