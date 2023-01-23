@@ -60,15 +60,48 @@ This file get all image files in a folder, resizes them to 1280 px width, rename
 
 ## Foto's bewerken
 
-1. Alle foto's zoveel mogelijk in dezelfde positie en met dezelfde belichting gefotografeerd. Alle in
-dezelfde folder opgeslagen.
-2. Photoshop: File > Scripts > Load Files into Stack...
+Alle foto's zoveel mogelijk in dezelfde positie en met dezelfde belichting gefotografeerd. Alle
+in dezelfde folder opgeslagen.
+
+### Originele foto's in PSB bestand
+
+* Photoshop: File > Scripts > Load Files into Stack...
   * Use: Folder
   * Browse...
   * Foto's verschijnen als layers.
-3. Opslaan als Large Document Format *psb* bestand. Photoshop stelt dit voor als het bestand te groot
-blijkt te worden bij opslaan.
-  * Openen kan minuten lang duren bij een bestand van 2,5 GB.
+* Guides om uiterste rand van alle tekening pagina's.
+* Image rotation, zo nodig.
+* Opslaan als Large Document Format *psb* bestand. Photoshop stelt dit voor als het bestand te
+groot blijkt te worden bij opslaan.
+
+!["Originele foto's"](assets/img/boek-2020-01-originele-fotos.jpg "Originele foto's")
+
+### Bijgesneden foto's in PSB bestand
+
+* Openen kan minuten lang duren bij een bestand van 2,5 GB.
+* Bijsnijden, ruim, met Crop Tool.
+* Individuele pagina's eventueel roteren en gelijk leggen aan de guides.
+* Opslaan onder een nieuwe naam als *psb* bestand.
+
+!["Bijgesneden"](assets/img/boek-2020-02-bijgesneden.jpg "Bijgesneden")
+
+### Elke tekening in een laag in PSD bestand
+
+* Pagina's verdelen in tekeningen per laag.
+* Elke tekening de datum en titel als naam van de laag.
+  * yyyy-mm-dd_locatie-van-de-tekening
+* Opslaan onder een nieuwe naam als *psd* bestand.
+
+!["Titels"](assets/img/boek-2021-03-titels.jpg "Titels")
+
+### Kleur correctie
+
+* Photoshop Actions maken met levels, exposure, hue, saturation.
+  * Verschillende voor boven en onder zo nodig.
+* Laag voor laag een Action toepassen en zo nodig nog bijstellen.
+* Opslaan onder een nieuwe naam als *psd* bestand.
+
+!["Kleurcorrectie"](assets/img/boek-2021-04-kleurcorrectie.jpg "Kleurcorrectie")
 
 ## Foto's van tekeningen maken
 
