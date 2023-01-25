@@ -4,6 +4,86 @@ Page built with Vue, TypeScript and PHP on hisschemoller.com to show my drawings
 
 http://www.hisschemoller.com/drawings
 
+## Foto's van tekeningen maken
+
+* In plastic verpakt de plaat museumglas en stuk wit karton met aanleghoek.
+* Microfoon statief met daarop de camera met schroefdraad adapter stukje.
+* Lijmklemmen, houten latjes.
+
+![Aanleghoek](assets/img/tafel1.jpg 'Aanleghoek')
+
+![Glasplaat](assets/img/tafel2.jpg 'Glasplaat')
+
+![Camera](assets/img/tafel3.jpg 'Camera')
+
+
+## Foto's bewerken
+
+Alle foto's zoveel mogelijk in dezelfde positie en met dezelfde belichting gefotografeerd. Alle
+in dezelfde folder opgeslagen.
+
+### Originele foto's in PSB bestand
+
+* Photoshop: File > Scripts > Load Files into Stack...
+  * Use: Folder
+  * Browse...
+  * Foto's verschijnen als layers.
+* Guides om uiterste rand van alle tekening pagina's.
+* Image rotation, zo nodig.
+* Opslaan als Large Document Format *psb* bestand. Photoshop stelt dit voor als het bestand te
+groot blijkt te worden bij opslaan.
+
+!["Originele foto's"](assets/img/boek-2020-01-originele-fotos.jpg "Originele foto's")
+
+### Bijgesneden foto's in PSB bestand
+
+* Openen kan minuten lang duren bij een bestand van 2,5 GB.
+* Bijsnijden, ruim, met Crop Tool.
+* Individuele pagina's eventueel roteren en gelijk leggen aan de guides.
+* Opslaan onder een nieuwe naam als *psb* bestand.
+
+!["Bijgesneden"](assets/img/boek-2020-02-bijgesneden.jpg "Bijgesneden")
+
+### Elke tekening in een laag in PSD bestand
+
+* Pagina's verdelen in tekeningen per laag.
+* Elke tekening de datum en titel als naam van de laag.
+  * yyyy-mm-dd_locatie-van-de-tekening
+* Opslaan onder een nieuwe naam als *psd* bestand.
+
+!["Titels"](assets/img/boek-2021-03-titels.jpg "Titels")
+
+### Kleur correctie
+
+* Photoshop Actions maken met levels, exposure, hue, saturation.
+  * Verschillende voor boven en onder zo nodig.
+* Laag voor laag een Action toepassen en zo nodig nog bijstellen.
+* Opslaan onder een nieuwe naam als *psd* bestand.
+
+!["Kleurcorrectie"](assets/img/boek-2021-04-kleurcorrectie.jpg "Kleurcorrectie")
+
+### Export layers als files
+
+Photoshop File > Export > Layers to Files...
+
+* Geen prefix
+* Bestandstype PNG
+* Geen transparantie
+* Trim Layers
+
+Standaard laat Photoshop elke bestandsnaam nog steeds voorafgaan met underscores en een viercijferig
+getal. Omdat ook uit te zetten:
+
+Applications/Adobe Photoshop 2023/Presets/Scripts/Export Layers To Files.jsx
+
+en daarin:
+
+```javascript
+// fileNameBody += "_" + zeroSuppress(i, 4);
+// fileNameBody += "_" + layerName;
+fileNameBody += layerName;
+```
+
 ## Local development
 
 Use MAMP, point virtual host *website-drawings.localdev* to *public/* in this project.
@@ -56,61 +136,3 @@ http://website-drawings.localdev/backend/_helper_resize_files.php
 
 This file get all image files in a folder, resizes them to 1280 px width, renames them from
 'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
-
-
-## Foto's bewerken
-
-Alle foto's zoveel mogelijk in dezelfde positie en met dezelfde belichting gefotografeerd. Alle
-in dezelfde folder opgeslagen.
-
-### Originele foto's in PSB bestand
-
-* Photoshop: File > Scripts > Load Files into Stack...
-  * Use: Folder
-  * Browse...
-  * Foto's verschijnen als layers.
-* Guides om uiterste rand van alle tekening pagina's.
-* Image rotation, zo nodig.
-* Opslaan als Large Document Format *psb* bestand. Photoshop stelt dit voor als het bestand te
-groot blijkt te worden bij opslaan.
-
-!["Originele foto's"](assets/img/boek-2020-01-originele-fotos.jpg "Originele foto's")
-
-### Bijgesneden foto's in PSB bestand
-
-* Openen kan minuten lang duren bij een bestand van 2,5 GB.
-* Bijsnijden, ruim, met Crop Tool.
-* Individuele pagina's eventueel roteren en gelijk leggen aan de guides.
-* Opslaan onder een nieuwe naam als *psb* bestand.
-
-!["Bijgesneden"](assets/img/boek-2020-02-bijgesneden.jpg "Bijgesneden")
-
-### Elke tekening in een laag in PSD bestand
-
-* Pagina's verdelen in tekeningen per laag.
-* Elke tekening de datum en titel als naam van de laag.
-  * yyyy-mm-dd_locatie-van-de-tekening
-* Opslaan onder een nieuwe naam als *psd* bestand.
-
-!["Titels"](assets/img/boek-2021-03-titels.jpg "Titels")
-
-### Kleur correctie
-
-* Photoshop Actions maken met levels, exposure, hue, saturation.
-  * Verschillende voor boven en onder zo nodig.
-* Laag voor laag een Action toepassen en zo nodig nog bijstellen.
-* Opslaan onder een nieuwe naam als *psd* bestand.
-
-!["Kleurcorrectie"](assets/img/boek-2021-04-kleurcorrectie.jpg "Kleurcorrectie")
-
-## Foto's van tekeningen maken
-
-* In plastic verpakt de plaat museumglas en stuk wit karton met aanleghoek.
-* Microfoon statief met daarop de camera met schroefdraad adapter stukje.
-* Lijmklemmen, houten latjes.
-
-![Aanleghoek](assets/img/tafel1.jpg 'Aanleghoek')
-
-![Glasplaat](assets/img/tafel2.jpg 'Glasplaat')
-
-![Camera](assets/img/tafel3.jpg 'Camera')
