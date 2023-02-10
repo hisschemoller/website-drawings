@@ -41,14 +41,14 @@ include(SHARED_PATH . '/cms_header.php');
     <div class="row">
       <div class="col-md-8">
         <form action="<?php echo url_for('backend/edit.php?id=' . h(u($id))); ?>" method="post">
-          <input type="hidden" name="image_file" value="<?php echo h($drawing['image_file']); ?>" />
+          <input type="hidden" name="image_file_small" value="<?php echo h($drawing['image_file_small']); ?>" />
 
           <div class="form-floating mb-3 mt-3">
             <input type="text" name="title" id="title" value="<?php echo h($drawing['title']); ?>" placeholder="Title" class="form-control" />
             <label for="description">Title</label>
           </div>
 
-          <input type="hidden" name="image_file" value="<?php echo h($drawing['image_file']); ?>" />
+          <input type="hidden" name="image_file_small" value="<?php echo h($drawing['image_file_small']); ?>" />
           <div class="form-floating mb-3 mt-3">
             <input type="text" name="description" id="description" value="<?php echo h($drawing['description']); ?>" placeholder="Description" class="form-control" />
             <label for="description">Description</label>

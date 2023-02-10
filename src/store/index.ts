@@ -4,7 +4,7 @@ import Drawing from '../interfaces/Drawing';
 
 export default createStore({
   state: {
-    env: 'live', // 'dev' | 'live'
+    env: 'dev', // 'dev' | 'live'
     drawings: Array<Drawing>(),
     pageIndex: 0,
     pageSize: 30,

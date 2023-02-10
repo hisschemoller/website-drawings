@@ -71,8 +71,8 @@ Photoshop File > Export > Layers to Files...
 * Geen transparantie
 * Trim Layers
 
-Standaard laat Photoshop elke bestandsnaam nog steeds voorafgaan met underscores en een viercijferig
-getal. Omdat ook uit te zetten:
+Standaard laat Photoshop zelfs zonder prefix elke bestandsnaam nog steeds voorafgaan door
+underscores en een viercijferig getal. Om dat ook uit te zetten:
 
 Applications/Adobe Photoshop 2023/Presets/Scripts/Export Layers To Files.jsx
 
@@ -86,7 +86,42 @@ fileNameBody += layerName;
 
 ## Local development
 
+### Frontend
+
+To set up and run the Vue frontend:
+
+```
+yarn install
+yarn dev
+```
+
+In *src/store/index.ts* set `state.env = 'dev'`.<br>
+Frontend running at http://localhost:8080/<br>
+
+### Backend
+
 Use MAMP, point virtual host *website-drawings.localdev* to *public/* in this project.
+
+### Database table
+
+<table cellspacing="0" class="nowrap" border="2">
+<thead><tr><td>Column</td><td>TypeComment</td></tr></thead>
+<tbody>
+<tr><td>id</td><td><span title="">smallint(6)</span> <i>Auto Increment</i></td></tr>
+<tr class="odd"><td>image_file_large</td><td><span title="utf8mb3_general_ci">varchar(255)</span></td></tr>
+<tr><td>width_large</td><td><span title="">int(6)</span></td></tr>
+<tr class="odd"><td>height_large</td><td><span title="">int(6)</span>
+</td></tr><tr><td>image_file_small</td><td><span title="utf8mb3_general_ci">varchar(255)</span>
+</td></tr><tr class="odd"><td>width_small</td><td><span title="">int(6)</span>
+</td></tr><tr><td>height_small</td><td><span title="">int(6)</span>
+</td></tr><tr class="odd"><td>latitude</td><td><span title="">decimal(8,6)</span> <span title="Default value">[<b>52.370434</b>]</span>
+</td></tr><tr><td>longitude</td><td><span title="">decimal(9,6)</span> <span title="Default value">[<b>4.901212</b>]</span>
+</td></tr><tr class="odd"><td>title</td><td><span title="utf8mb3_general_ci">varchar(50)</span> <i>NULL</i>
+</td></tr><tr><td>description</td><td><span title="utf8mb3_general_ci">varchar(255)</span> <i>NULL</i>
+</td></tr><tr class="odd"><td>date</td><td><span title="">date</span>
+</td></tr></tbody></table>
+
+### Edit table
 
 http://website-drawings.localdev/backend/api.php<br>
 Just dump the whole drawings table.
@@ -97,7 +132,7 @@ Edit a drawing, its coordinates.
 http://website-drawings.localdev/backend/list.php<br>
 List of all drawings with edit links.
 
-### Edit table helper
+### Edit table helpers
 
 http://website-drawings.localdev/backend/_helper_edit_table.php
 
@@ -136,3 +171,15 @@ http://website-drawings.localdev/backend/_helper_resize_files.php
 
 This file get all image files in a folder, resizes them to 1280 px width, renames them from
 'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
+
+## Volgende stappen
+
+* Originele PNG's hernoemen met *_helper_rename_files.php*.
+* Alle naar grote JPG's met Photoshop of *_helper_resize_files.php*.
+* Alle naar kleine JPG's met Photoshop of *_helper_resize_files.php*.
+* Beide formaten in de juiste mappen voor de lokale server.
+* Maak rijen in de db tabel voor alle afbeeldingen met *_helper_import_files.php*.
+* Beide formaten afbeeldingen in de ../images/drawings/ map.
+* Zet latitude and longitude op zinvolle waardes met *_helper_edit_table.php*.
+* Latitude, longitude en titel bewerken met list.php en edit.php.
+* Tabel en afbeeldingen naar de hisschemoller server.

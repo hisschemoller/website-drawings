@@ -1,7 +1,10 @@
 <?php
 
 function h($string='') {
-  return htmlspecialchars($string);
+  if ($string != null && strlen($string) > 0) {
+    return htmlspecialchars($string);
+  }
+  return $string;
 }
 
 function is_post_request() {
