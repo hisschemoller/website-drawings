@@ -32,13 +32,13 @@ include(SHARED_PATH . '/cms_header.php');
       <div class="col">
         <h1>Edit drawing</h1>
       </div>
-      <div class="col d-flex align-items-center">
+      <div class="col d-flex align-items-center justify-content-end">
         <a href="<?php echo url_for('backend/list.php'); ?>">< Back to overview list</a>
       </div>
     </div>
     <div id="map" class="map"></div>
     <div id="mouse-position"></div>
-    <div class="row">
+    <div class="row pb-5">
       <div class="col-md-8">
         <form action="<?php echo url_for('backend/edit.php?id=' . h(u($id))); ?>" method="post">
           <input type="hidden" name="image_file_small" value="<?php echo h($drawing['image_file_small']); ?>" />

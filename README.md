@@ -84,6 +84,40 @@ en daarin:
 fileNameBody += layerName;
 ```
 
+### Bestanden schalen en converteren van PNG naar JPG
+
+Met de Photoshop File > Script > Image Processor.<br>
+Elke afbeelding in 640 en 1280 pixels breedte.<br>
+JPG kwaliteit 5 (van 12).<br>
+Twee mappen voor de twee breedtes:<br>
+*public/images/drawings-640/* en *public/images/drawings-1280/*<br>
+
+!["Image Processor"](assets/img/photoshop-image-processor.png "Image Processor")
+
+### Bestandsnamen aanpassen
+
+Met http://website-drawings.localdev/backend/_helper_rename_files.php<br>
+Zie informatie hieronder in Local Development - Backend.<br>
+
+!["Rename Files"](assets/img/rename-files.png "Rename Files")
+
+### Importeren in database
+
+Met http://website-drawings.localdev/backend/_helper_import_files.php<br>
+De breedte en hoogte van zowel de 640 als 1280 versie worden gemeten.<br>
+De beschrijving en datum worden uit de bestandsnaam gehaald.<br>
+Daarmee worden rijen in de database tabel hisschemoller_drawings gemaakt.<br>
+De tabel heeft al defaults voor de lengte- en breedtegraad.<br>
+
+!["Import Files"](assets/img/import-files.png "Import Files")
+
+### Locatie en beschrijving
+
+Afbeeldingen te kiezen in *http://website-drawings.localdev/backend/list.php*<br>
+Locatie, beschrijving en datum te bewerken in *http://website-drawings.localdev/backend/edit.php*<br>
+
+!["Edit Drawing"](assets/img/edit-drawing.png "Edit Drawing")
+
 ## Local development
 
 ### Frontend
@@ -171,15 +205,3 @@ http://website-drawings.localdev/backend/_helper_resize_files.php
 
 This file get all image files in a folder, resizes them to 1280 px width, renames them from
 'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
-
-## Volgende stappen
-
-* Originele PNG's hernoemen met *_helper_rename_files.php*.
-* Alle naar grote JPG's met Photoshop of *_helper_resize_files.php*.
-* Alle naar kleine JPG's met Photoshop of *_helper_resize_files.php*.
-* Beide formaten in de juiste mappen voor de lokale server.
-* Maak rijen in de db tabel voor alle afbeeldingen met *_helper_import_files.php*.
-* Beide formaten afbeeldingen in de ../images/drawings/ map.
-* Zet latitude and longitude op zinvolle waardes met *_helper_edit_table.php*.
-* Latitude, longitude en titel bewerken met list.php en edit.php.
-* Tabel en afbeeldingen naar de hisschemoller server.
