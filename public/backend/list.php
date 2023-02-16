@@ -10,9 +10,10 @@ include(SHARED_PATH . '/cms_header.php');
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Title</th>
           <th scope="col">Description</th>
           <th scope="col">Date</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">Latitude</th>
         </tr>
       </thead>
       <tbody>
@@ -23,9 +24,10 @@ include(SHARED_PATH . '/cms_header.php');
     $description = $row['description'];
     $description = strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description;
     echo '<tr>';
-    echo '<td><a href="' . url_for('backend/edit.php') . '?id=' . $row['id'] . '">' . $row['title'] . '</a></td>';
     echo '<td><a href="' . url_for('backend/edit.php') . '?id=' . $row['id'] . '">' . $description . '</a></td>';
     echo '<td>' . $row['date'] . '</td>';
+    echo '<td>' . $row['longitude'] . '</td>';
+    echo '<td>' . $row['latitude'] . '</td>';
     echo '</tr>';
   }
 ?>

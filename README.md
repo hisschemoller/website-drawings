@@ -118,6 +118,17 @@ Locatie, beschrijving en datum te bewerken in *http://website-drawings.localdev/
 
 !["Edit Drawing"](assets/img/edit-drawing.png "Edit Drawing")
 
+### Data naar remote server
+
+Upload alle afbeeldingen naar *images/drawings/*
+
+Exporteer en importeer de database tabel.
+
+De drawings-app uit een JSON bestand, dus die db tabel is eigenlijk niet nodig. Exporteer de tabel
+met PhpMyAdmin als JSON met de *pretty-print* optie aangevinkt.<br>
+Upload de JSON naar *wordpress/wp-content/plugins/drawings-app/dist/json/* met de naam
+*drawings.json*.
+
 ## Local development
 
 ### Frontend
