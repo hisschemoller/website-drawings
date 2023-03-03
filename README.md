@@ -131,18 +131,6 @@ Upload de JSON naar *wordpress/wp-content/plugins/drawings-app/dist/json/* met d
 
 ## Local development
 
-### Frontend
-
-To set up and run the Vue frontend:
-
-```
-yarn install
-yarn dev
-```
-
-In *src/store/index.ts* set `state.env = 'dev'`.<br>
-Frontend running at http://localhost:8080/<br>
-
 ### Backend
 
 Use MAMP, point virtual host *website-drawings.localdev* to *public/* in this project.
@@ -216,3 +204,16 @@ http://website-drawings.localdev/backend/_helper_resize_files.php
 
 This file get all image files in a folder, resizes them to 1280 px width, renames them from
 'filename.png' to 'filename_-_1280.png' and saves them to '../images/drawings-1280/'.
+
+
+## Vue app / Wordpress plugin
+
+To set up and run the Vue frontend:
+
+```
+yarn install
+yarn dev
+```
+
+In *src/store/index.ts* set `state.env = 'dev'`.<br>
+Frontend running at http://localhost:8080/<br>

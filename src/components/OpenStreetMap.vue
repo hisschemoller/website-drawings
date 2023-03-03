@@ -5,10 +5,10 @@
     <div>
       <img
         v-bind:src="this.popupImageSrc"
-        v-bind:alt="this.popupTitle"
+        v-bind:alt="this.popupDescription"
         @click="imageClickHandler(this.popupId)"
         class="ol-popup-image">
-      <h4 ref="popup-title" class="ol-popup-title">{{this.popupTitle}}</h4>
+      <span ref="popup-title" class="ol-popup-description">{{this.popupDescription}}</span>
     </div>
   </div>
 </template>
@@ -48,7 +48,7 @@ const OpenStreetMap = defineComponent({
       popupDisplay: 'none',
       popupId: '',
       popupImageSrc: '',
-      popupTitle: '',
+      popupDescription: '',
       styleCache: {} as StyleCache,
     };
   },
@@ -96,8 +96,11 @@ const OpenStreetMap = defineComponent({
           if (markerFeatures.length === 1) {
             this.popupDisplay = 'block';
             this.popupId = markerFeatures[0].get('id');
+            console.log('popupId', this.popupId);
             this.popupImageSrc = markerFeatures[0].get('srcSmall');
-            this.popupTitle = markerFeatures[0].get('title');
+            this.popupDescription = markerFeatures[0].get('description');
+            console.log('popupDescription', this.popupDescription);
+            console.log('description', markerFeatures[0].get('description'));
             this.popupOverlay.setPosition(coordinate);
           } else if (markerFeatures.length > 1) {
             this.zoomToCluster(pixel);
@@ -142,13 +145,13 @@ const OpenStreetMap = defineComponent({
       // add the new markers
       newDrawings.forEach((drawing) => {
         const {
-          id, latitude, longitude, srcSmall, title,
+          id, latitude, longitude, srcSmall, description,
         } = drawing;
         const feature = new Feature({
+          description,
           geometry: new Point(fromLonLat([longitude, latitude])),
           id,
           srcSmall,
-          title,
         });
         features.push(feature);
       });
@@ -280,10 +283,12 @@ export default OpenStreetMap;
 }
 .ol-popup-image {
   cursor: pointer;
+  display: block;
   max-width: 200px;
   margin: 0 0 5px 0;
 }
-.ol-popup-title {
+.ol-popup-description {
   font-size: 16px;
+  margin-bottom: 10px;
 }
 </style>
