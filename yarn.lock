@@ -892,17 +892,17 @@
   resolved "https://registry.yarnpkg.com/@mapbox/jsonlint-lines-primitives/-/jsonlint-lines-primitives-2.0.2.tgz#ce56e539f83552b58d10d672ea4d6fc9adc7b234"
   integrity sha1-zlblOfg1UrWNENZy6k1vya3HsjQ=
 
-"@mapbox/mapbox-gl-style-spec@^13.14.0":
-  version "13.18.1"
-  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-style-spec/-/mapbox-gl-style-spec-13.18.1.tgz#9b8a75da9d77716b880d3de927bbea6041b6ad87"
-  integrity sha512-By+CufXEpba7sIUfnpbtVzy5tqrCyFDNssq1k7psxzCL1Xr0y916OSkEH0j7fFilhalVExjoh/mYtxH32tOYqw==
+"@mapbox/mapbox-gl-style-spec@^13.23.1":
+  version "13.28.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-style-spec/-/mapbox-gl-style-spec-13.28.0.tgz#2ec226320a0f77856046e000df9b419303a56458"
+  integrity sha512-B8xM7Fp1nh5kejfIl4SWeY0gtIeewbuRencqO3cJDrCHZpaPg7uY+V8abuR+esMeuOjRl5cLhVTP40v+1ywxbg==
   dependencies:
     "@mapbox/jsonlint-lines-primitives" "~2.0.2"
     "@mapbox/point-geometry" "^0.1.0"
     "@mapbox/unitbezier" "^0.0.0"
     csscolorparser "~1.0.2"
     json-stringify-pretty-compact "^2.0.0"
-    minimist "^1.2.5"
+    minimist "^1.2.6"
     rw "^1.3.3"
     sort-object "^0.3.2"
 
@@ -929,6 +929,11 @@
   resolved "https://registry.npm.taobao.org/@nodelib/fs.stat/download/@nodelib/fs.stat-1.1.3.tgz?cache=0&sync_timestamp=1609074653238&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40nodelib%2Ffs.stat%2Fdownload%2F%40nodelib%2Ffs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
 
+"@petamoriken/float16@^3.4.7":
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/@petamoriken/float16/-/float16-3.7.1.tgz#4a0cc0854a3a101cc2d697272f120e1a05975ce5"
+  integrity sha512-oXZOc+aePd0FnhTWk15pyqK+Do87n0TyLV1nxdEougE95X/WXWDqmQobfhgnSY7QsWn5euZUWuDVeTQvoQ5VNw==
+
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.8.0"
   resolved "https://registry.npm.taobao.org/@soda/friendly-errors-webpack-plugin/download/@soda/friendly-errors-webpack-plugin-1.8.0.tgz?cache=0&sync_timestamp=1607927625608&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40soda%2Ffriendly-errors-webpack-plugin%2Fdownload%2F%40soda%2Ffriendly-errors-webpack-plugin-1.8.0.tgz#84751d82a93019d5c92c0cf0e45ac59087cd2240"
@@ -948,11 +953,6 @@
   version "1.3.1"
   resolved "https://registry.npm.taobao.org/@types/anymatch/download/@types/anymatch-1.3.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fanymatch%2Fdownload%2F%40types%2Fanymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha1-M2utwb7sudrMOL6izzKt9ieoQho=
-
-"@types/arcgis-rest-api@*":
-  version "10.4.4"
-  resolved "https://registry.yarnpkg.com/@types/arcgis-rest-api/-/arcgis-rest-api-10.4.4.tgz#c84b26ac7f01deb2829bff10ebbe544c2310fbcd"
-  integrity sha512-5NwSfj4po+03fauyr4F5AxYzu8pbbqmxay+pNr5ef2V3Mj+7OylvV48VKuVoO9m799jhZdH3EQgQBHm3Y6q1Sw==
 
 "@types/body-parser@*":
   version "1.19.0"
@@ -1000,11 +1000,6 @@
     "@types/express-serve-static-core" "*"
     "@types/qs" "*"
     "@types/serve-static" "*"
-
-"@types/geojson@*":
-  version "7946.0.7"
-  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.7.tgz#c8fa532b60a0042219cdf173ca21a975ef0666ad"
-  integrity sha512-wE2v81i4C4Ol09RtsWFAqg3BUitWbHSpSlIo+bNdsCJijO9sjme+zm+73ZMCa/qMC8UEERxzGbvmr1cffo2SiQ==
 
 "@types/glob@^7.1.1":
   version "7.1.3"
@@ -1065,19 +1060,10 @@
   resolved "https://registry.npm.taobao.org/@types/normalize-package-data/download/@types/normalize-package-data-2.4.0.tgz?cache=0&sync_timestamp=1605054933259&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnormalize-package-data%2Fdownload%2F%40types%2Fnormalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha1-5IbQ2XOW15vu3QpuM/RTT/a0lz4=
 
-"@types/ol@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@types/ol/-/ol-6.4.2.tgz#3992e2f06fb3c224cda28e6727bc283febd5f8ff"
-  integrity sha512-lSms1n5obkacAosby0U3HtnDkjhEXNCYNj0BYjQXyAZHz7+QkA3SuvUHiQ91DBUaAPptCrps3E2mtaPTGw74UA==
-  dependencies:
-    "@types/arcgis-rest-api" "*"
-    "@types/geojson" "*"
-    "@types/topojson-specification" "*"
-
-"@types/openlayers@^4.6.17":
-  version "4.6.17"
-  resolved "https://registry.yarnpkg.com/@types/openlayers/-/openlayers-4.6.17.tgz#39a8dce631e284a26cf0958664509932e6cd7c7d"
-  integrity sha512-vCCV5MY3XRmHyED1ndHxXJ/5IpeA3pX9J6IKZnMY+uTerhYNfG7pM451dgS90tSkBBxszd8ETPrF5ggQ9mqwlA==
+"@types/openlayers@^4.6.18":
+  version "4.6.18"
+  resolved "https://registry.yarnpkg.com/@types/openlayers/-/openlayers-4.6.18.tgz#745122d14bc3c7aab8839c5c1b1411e0fd7c75d3"
+  integrity sha512-srqcI4chyzzs11ZhYpnZqT6Lh1v/O5EXh+pPENDtAwhE7CM31h+JsGomt+ioGhuNVJ96Jl4UkHR1Lllb/XrQAA==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1116,13 +1102,6 @@
   version "1.0.6"
   resolved "https://registry.npm.taobao.org/@types/tapable/download/@types/tapable-1.0.6.tgz?cache=0&sync_timestamp=1605057883727&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Ftapable%2Fdownload%2F%40types%2Ftapable-1.0.6.tgz#a9ca4b70a18b270ccb2bc0aaafefd1d486b7ea74"
   integrity sha1-qcpLcKGLJwzLK8Cqr+/R1Ia36nQ=
-
-"@types/topojson-specification@*":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@types/topojson-specification/-/topojson-specification-1.0.1.tgz#a80cb294290b79f2d674d3f5938c544ed2bd9d80"
-  integrity sha512-ZZYZUgkmUls9Uhxx2WZNt9f/h2+H3abUUjOVmq+AaaDFckC5oAwd+MDp95kBirk+XCXrYj0hfpI6DSUiJMrpYQ==
-  dependencies:
-    "@types/geojson" "*"
 
 "@types/uglify-js@*":
   version "3.11.1"
@@ -3520,6 +3499,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+earcut@^2.2.3:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.4.tgz#6d02fd4d68160c114825d06890a92ecaae60343a"
+  integrity sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==
+
 easy-stack@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/easy-stack/download/easy-stack-1.0.1.tgz?cache=0&sync_timestamp=1605128933665&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feasy-stack%2Fdownload%2Feasy-stack-1.0.1.tgz#8afe4264626988cabb11f3c704ccd0c835411066"
@@ -4432,6 +4416,19 @@ gensync@^1.0.0-beta.1:
   version "1.0.0-beta.2"
   resolved "https://registry.npm.taobao.org/gensync/download/gensync-1.0.0-beta.2.tgz?cache=0&sync_timestamp=1603829716561&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fgensync%2Fdownload%2Fgensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha1-MqbudsPX9S1GsrGuXZP+qFgKJeA=
+
+geotiff@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/geotiff/-/geotiff-2.0.7.tgz#358e578233af70bfb0b4dee62d599ad78fc5cfca"
+  integrity sha512-FKvFTNowMU5K6lHYY2f83d4lS2rsCNdpUC28AX61x9ZzzqPNaWFElWv93xj0eJFaNyOYA63ic5OzJ88dHpoA5Q==
+  dependencies:
+    "@petamoriken/float16" "^3.4.7"
+    lerc "^3.0.0"
+    pako "^2.0.4"
+    parse-headers "^2.0.2"
+    quick-lru "^6.1.1"
+    web-worker "^1.2.0"
+    xml-utils "^1.0.2"
 
 get-caller-file@^2.0.1:
   version "2.0.5"
@@ -5545,6 +5542,11 @@ launch-editor@^2.2.1:
     chalk "^2.3.0"
     shell-quote "^1.6.1"
 
+lerc@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/lerc/-/lerc-3.0.0.tgz#36f36fbd4ba46f0abf4833799fff2e7d6865f5cb"
+  integrity sha512-Rm4J/WaHhRa93nCN2mwWDZFoRVF18G1f47C+kvQWyHGEZxFpTUi73p7lMVSAndyxGt6lJ2/CFbOcf9ra5p8aww==
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.npm.taobao.org/levn/download/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
@@ -5745,10 +5747,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mapbox-to-css-font@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/mapbox-to-css-font/-/mapbox-to-css-font-2.4.0.tgz#a23b51664a1ee839beaefade013f2655bee9a390"
-  integrity sha512-v674D0WtpxCXlA6E+sBlG1QJWdUkz/s9qAD91bJSXBGuBL5lL4tJXpoJEftecphCh2SVQCjWMS2vhylc3AIQTg==
+mapbox-to-css-font@^2.4.1:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/mapbox-to-css-font/-/mapbox-to-css-font-2.4.2.tgz#a9e31b363ad8ca881cd339ca99f2d2a6b02ea5dd"
+  integrity sha512-f+NBjJJY4T3dHtlEz1wCG7YFlkODEjFIYlxDdLIDMNpkSksqTt+l/d4rjuwItxuzkuMFvPyrjzV2lxRM4ePcIA==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -5932,6 +5934,11 @@ minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.npm.taobao.org/minimist/download/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=
+
+minimist@^1.2.6:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
+  integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
 
 minipass-collect@^1.0.2:
   version "1.0.2"
@@ -6321,21 +6328,22 @@ obuf@^1.0.0, obuf@^1.1.2:
   resolved "https://registry.npm.taobao.org/obuf/download/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
   integrity sha1-Cb6jND1BhZ69RGKS0RydTbYZCE4=
 
-ol-mapbox-style@^6.1.1:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/ol-mapbox-style/-/ol-mapbox-style-6.3.0.tgz#615bbbc3a4b4cb712666185ac22dcbd912b045c7"
-  integrity sha512-oRMP5nTEHvF8OoH0sofXElJGi1RV84H27M67nbb2AKcElGag/Z9a6FoI15+J/LSxsg5E1IOW4pIHi0w5ZOUIVg==
+ol-mapbox-style@^9.2.0:
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/ol-mapbox-style/-/ol-mapbox-style-9.7.0.tgz#38a4f7abc8f0a94f378dcdb7cefdcc69ca3f6287"
+  integrity sha512-YX3u8FBJHsRHaoGxmd724Mp5WPTuV7wLQW6zZhcihMuInsSdCX1EiZfU+8IAL7jG0pbgl5YgC0aWE/MXJcUXxg==
   dependencies:
-    "@mapbox/mapbox-gl-style-spec" "^13.14.0"
-    mapbox-to-css-font "^2.4.0"
-    webfont-matcher "^1.1.0"
+    "@mapbox/mapbox-gl-style-spec" "^13.23.1"
+    mapbox-to-css-font "^2.4.1"
 
-ol@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/ol/-/ol-6.5.0.tgz#d9cd59081ac34dc4caf0509c3f667748a8207a21"
-  integrity sha512-a5ebahrjF5yCPFle1rc0aHzKp/9A4LlUnjh+S3I+x4EgcvcddDhpOX3WDOs0Pg9/wEElrikHSGEvbeej2Hh4Ug==
+ol@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/ol/-/ol-7.3.0.tgz#7ffb5f258dafa4a3e218208aad9054d61f6fe786"
+  integrity sha512-08vJE4xITKPazQ9qJjeqYjRngnM9s+1eSv219Pdlrjj3LpLqjEH386ncq+76Dw1oGPGR8eLVEePk7FEd9XqqMw==
   dependencies:
-    ol-mapbox-style "^6.1.1"
+    earcut "^2.2.3"
+    geotiff "^2.0.7"
+    ol-mapbox-style "^9.2.0"
     pbf "3.2.1"
     rbush "^3.0.1"
 
@@ -6506,6 +6514,11 @@ p-try@^2.0.0:
   resolved "https://registry.npm.taobao.org/p-try/download/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=
 
+pako@^2.0.4:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-2.1.0.tgz#266cc37f98c7d883545d11335c00fbd4062c9a86"
+  integrity sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==
+
 pako@~1.0.5:
   version "1.0.11"
   resolved "https://registry.npm.taobao.org/pako/download/pako-1.0.11.tgz?cache=0&sync_timestamp=1605741987327&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpako%2Fdownload%2Fpako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
@@ -6544,6 +6557,11 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.5:
     evp_bytestokey "^1.0.0"
     pbkdf2 "^3.0.3"
     safe-buffer "^5.1.1"
+
+parse-headers@^2.0.2:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/parse-headers/-/parse-headers-2.0.5.tgz#069793f9356a54008571eb7f9761153e6c770da9"
+  integrity sha512-ft3iAoLOB/MlwbNXgzy43SWGP6sQki2jQvAyBg/zDFAgr9bfNWZIUj42Kw2eJIl8kEi4PbgE6U1Zau/HwI75HA==
 
 parse-json@^2.2.0:
   version "2.2.0"
@@ -7289,6 +7307,11 @@ querystringify@^2.1.1:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/querystringify/download/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
   integrity sha1-M0WUG0FTy50ILY7uTNogFqmu9/Y=
+
+quick-lru@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-6.1.1.tgz#f8e5bf9010376c126c80c1a62827a526c0e60adf"
+  integrity sha512-S27GBT+F0NTRiehtbrgaSE1idUAJ5bX8dPAQTdylEyNlrdcH5X4Lz7Edz3DYzecbsCluD5zO8ZNEe04z3D3u6Q==
 
 quickselect@^2.0.0:
   version "2.0.0"
@@ -9001,10 +9024,10 @@ wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-webfont-matcher@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/webfont-matcher/-/webfont-matcher-1.1.0.tgz#98ce95097b29e31fbe733053e10e571642d1c6c7"
-  integrity sha1-mM6VCXsp4x++czBT4Q5XFkLRxsc=
+web-worker@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/web-worker/-/web-worker-1.2.0.tgz#5d85a04a7fbc1e7db58f66595d7a3ac7c9c180da"
+  integrity sha512-PgF341avzqyx60neE9DD+XS26MMNMoUQRz9NOZwW32nPQrF6p77f1htcnjBSEV8BGMKZ16choqUG4hyI0Hx7mA==
 
 webpack-bundle-analyzer@^3.8.0:
   version "3.9.0"
@@ -9223,6 +9246,11 @@ ws@^6.0.0, ws@^6.2.1:
   integrity sha1-RC/fCkftZPWbal2P8TD0dI7VJPs=
   dependencies:
     async-limiter "~1.0.0"
+
+xml-utils@^1.0.2:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/xml-utils/-/xml-utils-1.3.0.tgz#f1043534e3ac3deda12ddab39f8442e16da98ebb"
+  integrity sha512-i4PIrX33Wd66dvwo4syicwlwmnr6wuvvn4f2ku9hA67C2Uk62Xubczuhct+Evnd12/DV71qKNeDdJwES8HX1RA==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
